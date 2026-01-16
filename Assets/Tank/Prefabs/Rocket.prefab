@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8883311751526886600}
+  - component: {fileID: -8615770838885025162}
   - component: {fileID: 9094148768202584842}
   - component: {fileID: 7647334296708255206}
   - component: {fileID: 5825538986373913829}
@@ -37,6 +38,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8615770838885025162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556074778921245943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd813971527dc148a2da066ebbd8000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lifetime
+  lifetime: 5
 --- !u!33 &9094148768202584842
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -154,8 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02cc8106b0597e54fa708b0ea4543427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script
+  damage: 5
   force: 100
-  effectOnDestroy: {fileID: 1428540705898108, guid: 05773da76fe5ee64584ab0c3d9169be9, type: 3}
+  effectOnDestroy: {fileID: 2198967943964389416, guid: 500d50a1f6b3ef140a4b00fc9e437375, type: 3}
 --- !u!96 &161009635985483099
 TrailRenderer:
   serializedVersion: 4

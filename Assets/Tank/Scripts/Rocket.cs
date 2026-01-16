@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Script : MonoBehaviour
+public class Rocket : Ammo
 {
     [SerializeField] float force = 1.0f;
     [SerializeField] GameObject effectOnDestroy;
@@ -23,8 +23,11 @@ public class Script : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null) health.OnDamage(damage);
+
         Debug.Log($"Hit {collision.gameObject.name}");
-        Destroy(gameObject);
         Instantiate(effectOnDestroy, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
