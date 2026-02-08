@@ -1,14 +1,18 @@
+using UnityEngine;
+
+#if UNITY_STANDALONE_WIN && !UNITY_WEBGL
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Utilities;
+#endif
 
-public class DualSensePlayerLedHealth : MonoBehaviour
+public class DualSensePlayerHealth : MonoBehaviour
 {
+#if UNITY_STANDALONE_WIN && !UNITY_WEBGL
     // Plugged in via Type-C -> DualSenseGamepadHID should be present.
     private DualSenseGamepadHID _ds;
 
@@ -84,4 +88,5 @@ public class DualSensePlayerLedHealth : MonoBehaviour
             return cmd;
         }
     }
+#endif
 }

@@ -8,7 +8,9 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject destroy_effect;
 
     [Header("Controller LEDs")]
+#if UNITY_STANDALONE_WIN && !UNITY_WEBGL
     [SerializeField] DualSensePlayerLedHealth playerLeds;
+#endif
 
     [SerializeField] Slider healthSlider;
     bool isPlayer;
@@ -27,7 +29,9 @@ public class Health : MonoBehaviour
     {
         // Optional: auto-find if you don’t want to drag it in
         if (gameObject.CompareTag("Player")) { isPlayer = true; }
+#if UNITY_STANDALONE_WIN && !UNITY_WEBGL
         if (playerLeds == null && isPlayer) playerLeds = FindObjectOfType<DualSensePlayerLedHealth>(true);
+#endif
     }
 
     void Start()
@@ -65,9 +69,11 @@ public class Health : MonoBehaviour
 
     void UpdatePlayerLeds()
     {
+#if UNITY_STANDALONE_WIN && !UNITY_WEBGL
         if (playerLeds == null) return;
 
         float health01 = Mathf.Clamp01(Cur_Health / max_health);
         playerLeds.SetHealth01(health01);
+#endif
     }
 }
