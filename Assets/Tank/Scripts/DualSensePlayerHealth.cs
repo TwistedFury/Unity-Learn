@@ -12,7 +12,7 @@ public class DualSensePlayerLedHealth : MonoBehaviour
     // Plugged in via Type-C -> DualSenseGamepadHID should be present.
     private DualSenseGamepadHID _ds;
 
-    // Call this when health changes (don't spam every frame unless you want to).
+    // Call this when health changes
     public void SetHealth01(float health01)
     {
         // Re-acquire in case device hot-plugged / current changed

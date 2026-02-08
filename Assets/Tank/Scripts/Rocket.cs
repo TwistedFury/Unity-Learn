@@ -28,6 +28,8 @@ public class Rocket : Ammo
 
         Debug.Log($"Hit {collision.gameObject.name}");
         Instantiate(effectOnDestroy, transform.position, Quaternion.identity);
+        ScoreOnDeath scoreOnDeath = collision.gameObject.GetComponent<ScoreOnDeath>();
+        if (scoreOnDeath != null) TankGameManager.Instance.score += scoreOnDeath.Score;
         Destroy(gameObject);
     }
 }

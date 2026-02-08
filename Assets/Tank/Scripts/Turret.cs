@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
     [SerializeField] float rotation_speed = 90.0f;
     [SerializeField] float fire_rate = 1.0f;
     [SerializeField] Ammo ammo;
     [SerializeField] Transform barrel;
+    [SerializeField] ScoreOnDeath scoreOnDeath;
 
     float fire_timer = 0;
 

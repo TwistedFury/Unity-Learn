@@ -21,11 +21,18 @@ public class Tank : MonoBehaviour
     [SerializeField] DualSenseTouchpadColor colorControl;
     [SerializeField] TankCannonTriggerFeel triggerFeel;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip fireSound;
+    [SerializeField] AudioClip reloadSound;
+
+    AudioSource fire, reload;
+
     InputAction moveAction;
     InputAction attackAction;
 
     private bool fireReady = false;
     public bool FireReady { get { return fireReady; } }
+    private bool reloaded = false;
 
     void Awake()
     {
@@ -33,6 +40,10 @@ public class Tank : MonoBehaviour
         if (triggerControl == null) triggerControl = GetComponent<DualSenseControls>();
         if (colorControl == null) colorControl = GetComponent<DualSenseTouchpadColor>();
         if (triggerFeel == null) triggerFeel = GetComponent<TankCannonTriggerFeel>();
+
+        // Initialize Audio
+        if (fireSound != null) { fire = gameObject.AddComponent<AudioSource>(); fire.clip = fireSound; }
+        if (reloadSound != null) { reload = gameObject.AddComponent<AudioSource>(); reload.clip = reloadSound; }
     }
 
     void Start()
@@ -75,6 +86,8 @@ public class Tank : MonoBehaviour
 
         fire_timer -= Time.deltaTime;
 
+        if (fire_timer < reloadSound.length && !reload.isPlaying && !reloaded) { reload.Play(); reloaded = true; }
+
         if (fire_timer <= 0f && colorControl != null)
         {
             SetColor(new Color32(0, 255, 0, 255));
@@ -95,6 +108,8 @@ public class Tank : MonoBehaviour
         fireReady = false;
 
         if (colorControl != null)
-            SetColor(new Color32(255, 0, 135, 255)); // back to pink
+            SetColor(new Color32(255, 0, 135, 255));
+        fire.Play();
+        reloaded = false;
     }
 }
